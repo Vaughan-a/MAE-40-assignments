@@ -1,0 +1,44 @@
+disp('Vaughan Altmann')
+% Question 1
+RR_Ex10_02_passive_filters
+syms IL IC Rd V0
+A2= [-1 1 1 0; L*s 0 0 1; 0 -1 0 C*s; 0 0 Rd -1];
+b2 = [0; Vi; 0; 0];
+x2 = A2\b2
+IL = x2(1,:); IC= x2(2,:); IRd= x2(3,:); V0= x2(4,:);
+
+% Question 2
+zeta = .1;
+omega4 = 10;
+Vo_LPF2_undamped=simplify(x2(4))
+F_LPF2_undamped=RR_tf([omega4^2],[1 2*zeta*omega4 omega4^2]);
+figure(4), RR_bode(F_LPF2_undamped)
+zeta2=.7;
+F_LPF2_undamped=RR_tf([omega4^2],[1 2*zeta2*omega4 omega4^2]);
+figure(5), RR_bode(F_LPF2_undamped)
+zeta3= 1;
+F_LPF2_undamped=RR_tf([omega4^2],[1 2*zeta3*omega4 omega4^2]);
+figure(6), RR_bode(F_LPF2_undamped)
+% The Bode plots show that the circuit represents a 2nd order-low pass
+% system. What makes these low pass filters is that the amplitude is higher on 
+% lower frequencies and decreases past a cutoff frequency 
+% (indicating that it rejects frequencies that are too high).
+% As zeta increases, the system becomes more dampened and more
+% stable. The circuit also demonstrates more stability since the
+% phase plots (bottom plot) for figures 4-6 decreases at the normal
+% frequency unlike figure 3, where the phase plot increases at the normal
+% frequency. 
+
+% Question 3
+syms V1 Cd 
+A3 = [-1 1 1 0 0; L*s 0 0 1 0; 0 -1 0 C*s 0; 0 0 Rd -1 1; 0 0 -1 0 Cd*s];
+b3 = [0; Vi; 0; 0; 0];
+x3 = A3\b3
+IL2 = x3(1,:); IC2= x3(2,:); IRd2= x3(3,:); V02= x3(4,:); V1= x3(5,:);
+tfq3 = V02/Vi %transfer function for q3, no omega conversion
+
+% Question 4
+Cdq4 = 4*C;
+Rdq4=sqrt(L/C);
+V02q4 = (Vi*(Cdq4*Rdq4*s + 1))/(Cdq4*Rdq4*s + C*L*s^2 + Cdq4*L*s^2 + C*Cdq4*L*Rdq4*s^3 + 1);
+trq4 = V02q4/Vi %Transfer function with new values, no omega conversion

@@ -1,4 +1,4 @@
-disp('Vaughan Altmann')
+clear all; clc; close all; disp('Vaughan Altmann')
 % Question 1
 RR_Ex10_02_passive_filters
 syms IL IC Rd V0

@@ -1,7 +1,7 @@
 clear all; clc; close all;
 disp('HW 3, Midterm 2023, Vaughan Altmann')
 % Question 1
-omega = 10; Q=5; Q2 = 10; %Q2 represents the Q value from 1h when c1 = 1/3
+omega = 10; Q=5; Q2 = 10; %Q2 represents the Q value from 1h when c1 = 1
 F_LPF2_undamped=RR_tf([omega/Q 0],[1 omega/Q omega^2]);
 figure(1), RR_bode(F_LPF2_undamped)
 hold on

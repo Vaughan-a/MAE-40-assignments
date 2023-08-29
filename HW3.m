@@ -72,32 +72,32 @@ plot(x2,z4)
 
 figure(5)
 x2 = linspace(0, 2*pi, 100);
-y5 = (8*abs(sin(x2))/R);
+y5 = (16*abs(sin(x2))/R);
 z5 = zeros(1,100);
 for n = 1:100
-    y5(n) = (8*abs(sin(x2(n)))/R);
+    y5(n) = (16*abs(sin(x2(n)))/R);
     if y4(n)< 4/R
         z5(n) = 0; 
     elseif y4(n)>=4/R
-        z5(n) = (8*abs(sin(x2(n)))/R);
+        z5(n) = (16*abs(sin(x2(n)))/R);
     end 
 end
 plot(x2,z5)
 
 figure(6)
 x2 = linspace(0, 2*pi, 100);
-y6 = 1./(1+abs(8*sin(x2)));
+y6 = 1./(1+abs(4*sin(x2)));
 z6 = zeros(1,100);
 z7 = zeros(1,100); %z7 represents the efficiency when sin(t)=1, 
 % lowest efficiency while current is running through the circuit
 for n = 1:100
-    y6(n) = 1/(1+abs(8*sin(x2(n))));
+    y6(n) = 1/(1+abs(4*sin(x2(n))));
     if y4(n)< 4/R
         z6(n) = 0; 
-        z7(n) = 1/9;
+        z7(n) = 1/5;
     elseif y4(n)>=4/R
-        z6(n) = 1/(1+abs(8*sin(x2(n))));
-        z7(n) = 1/9;
+        z6(n) = 1/(1+abs(4*sin(x2(n))));
+        z7(n) = 1/5;
     end 
 end
 plot(x2,z6,x2,z7,'g--')

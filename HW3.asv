@@ -7,6 +7,7 @@ figure(1), RR_bode(F_LPF2_undamped)
 hold on
 F_LPF3_undamped=RR_tf([omega/Q2 0],[1 omega/Q2 omega^2]);
 RR_bode(F_LPF3_undamped)
+Line
 syms R C L c1 Vi s
 % x=[IL IR Id Vm Vo]
 A = [-1 1 1 0 0;      % 0 = IR + Id - IL
